@@ -15,3 +15,14 @@ interface PterodactylServer {
 export interface PterodactylServerResponse {
 	data: PterodactylServer[];
 }
+
+interface PterodactylSubuser {
+	attributes: {
+		uuid: string;
+		email: string;
+	}
+}
+
+export interface PterodactylSubuserResponse {
+	data: PterodactylSubuser[]
+}
