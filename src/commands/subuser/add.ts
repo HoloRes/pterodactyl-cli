@@ -54,8 +54,8 @@ const permissionsChoices = [
 		checked: true,
 	},
 	{
-		name: 'Create',
-		value: 'file.create',
+		name: 'Read',
+		value: 'file.read',
 		checked: true,
 	},
 	{
