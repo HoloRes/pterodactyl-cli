@@ -16,76 +16,34 @@ oclif example Hello World CLI
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g ptero-add-subuser
-$ ptero-add-subuser COMMAND
+$ npm install -g ptero-cli
+$ ptero-cli COMMAND
 running command...
-$ ptero-add-subuser (--version)
-ptero-add-subuser/0.0.0 linux-x64 node-v16.14.0
-$ ptero-add-subuser --help [COMMAND]
+$ ptero-cli (--version)
+ptero-cli/0.0.0 linux-x64 node-v16.6.1
+$ ptero-cli --help [COMMAND]
 USAGE
-  $ ptero-add-subuser COMMAND
+  $ ptero-cli COMMAND
 ...
 ```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`ptero-add-subuser hello PERSON`](#ptero-add-subuser-hello-person)
-* [`ptero-add-subuser hello world`](#ptero-add-subuser-hello-world)
-* [`ptero-add-subuser help [COMMAND]`](#ptero-add-subuser-help-command)
-* [`ptero-add-subuser plugins`](#ptero-add-subuser-plugins)
-* [`ptero-add-subuser plugins:inspect PLUGIN...`](#ptero-add-subuser-pluginsinspect-plugin)
-* [`ptero-add-subuser plugins:install PLUGIN...`](#ptero-add-subuser-pluginsinstall-plugin)
-* [`ptero-add-subuser plugins:link PLUGIN`](#ptero-add-subuser-pluginslink-plugin)
-* [`ptero-add-subuser plugins:uninstall PLUGIN...`](#ptero-add-subuser-pluginsuninstall-plugin)
-* [`ptero-add-subuser plugins update`](#ptero-add-subuser-plugins-update)
+* [`ptero-cli help [COMMAND]`](#ptero-cli-help-command)
+* [`ptero-cli plugins`](#ptero-cli-plugins)
+* [`ptero-cli plugins:inspect PLUGIN...`](#ptero-cli-pluginsinspect-plugin)
+* [`ptero-cli plugins:install PLUGIN...`](#ptero-cli-pluginsinstall-plugin)
+* [`ptero-cli plugins:link PLUGIN`](#ptero-cli-pluginslink-plugin)
+* [`ptero-cli plugins:uninstall PLUGIN...`](#ptero-cli-pluginsuninstall-plugin)
+* [`ptero-cli plugins update`](#ptero-cli-plugins-update)
 
-## `ptero-add-subuser hello PERSON`
+## `ptero-cli help [COMMAND]`
 
-Say hello
+Display help for ptero-cli.
 
 ```
 USAGE
-  $ ptero-add-subuser hello [PERSON] -f <value>
-
-ARGUMENTS
-  PERSON  Person to say hello to
-
-FLAGS
-  -f, --from=<value>  (required) Whom is saying hello
-
-DESCRIPTION
-  Say hello
-
-EXAMPLES
-  $ oex hello friend --from oclif
-  hello friend from oclif! (./src/commands/hello/index.ts)
-```
-
-_See code: [dist/commands/hello/index.ts](https://github.com/HoloRes/pterodactyl-subuser-add-cli/blob/v0.0.0/dist/commands/hello/index.ts)_
-
-## `ptero-add-subuser hello world`
-
-Say hello world
-
-```
-USAGE
-  $ ptero-add-subuser hello world
-
-DESCRIPTION
-  Say hello world
-
-EXAMPLES
-  $ oex hello world
-  hello world! (./src/commands/hello/add.ts)
-```
-
-## `ptero-add-subuser help [COMMAND]`
-
-Display help for ptero-add-subuser.
-
-```
-USAGE
-  $ ptero-add-subuser help [COMMAND] [-n]
+  $ ptero-cli help [COMMAND] [-n]
 
 ARGUMENTS
   COMMAND  Command to show help for.
@@ -94,18 +52,18 @@ FLAGS
   -n, --nested-commands  Include all nested commands in the output.
 
 DESCRIPTION
-  Display help for ptero-add-subuser.
+  Display help for ptero-cli.
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.11/src/commands/help.ts)_
 
-## `ptero-add-subuser plugins`
+## `ptero-cli plugins`
 
 List installed plugins.
 
 ```
 USAGE
-  $ ptero-add-subuser plugins [--core]
+  $ ptero-cli plugins [--core]
 
 FLAGS
   --core  Show core plugins.
@@ -114,18 +72,18 @@ DESCRIPTION
   List installed plugins.
 
 EXAMPLES
-  $ ptero-add-subuser plugins
+  $ ptero-cli plugins
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v2.0.11/src/commands/plugins/index.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v2.1.0/src/commands/plugins/index.ts)_
 
-## `ptero-add-subuser plugins:inspect PLUGIN...`
+## `ptero-cli plugins:inspect PLUGIN...`
 
 Displays installation properties of a plugin.
 
 ```
 USAGE
-  $ ptero-add-subuser plugins:inspect PLUGIN...
+  $ ptero-cli plugins:inspect PLUGIN...
 
 ARGUMENTS
   PLUGIN  [default: .] Plugin to inspect.
@@ -138,16 +96,16 @@ DESCRIPTION
   Displays installation properties of a plugin.
 
 EXAMPLES
-  $ ptero-add-subuser plugins:inspect myplugin
+  $ ptero-cli plugins:inspect myplugin
 ```
 
-## `ptero-add-subuser plugins:install PLUGIN...`
+## `ptero-cli plugins:install PLUGIN...`
 
 Installs a plugin into the CLI.
 
 ```
 USAGE
-  $ ptero-add-subuser plugins:install PLUGIN...
+  $ ptero-cli plugins:install PLUGIN...
 
 ARGUMENTS
   PLUGIN  Plugin to install.
@@ -169,23 +127,23 @@ DESCRIPTION
   the CLI without the need to patch and update the whole CLI.
 
 ALIASES
-  $ ptero-add-subuser plugins add
+  $ ptero-cli plugins add
 
 EXAMPLES
-  $ ptero-add-subuser plugins:install myplugin 
+  $ ptero-cli plugins:install myplugin 
 
-  $ ptero-add-subuser plugins:install https://github.com/someuser/someplugin
+  $ ptero-cli plugins:install https://github.com/someuser/someplugin
 
-  $ ptero-add-subuser plugins:install someuser/someplugin
+  $ ptero-cli plugins:install someuser/someplugin
 ```
 
-## `ptero-add-subuser plugins:link PLUGIN`
+## `ptero-cli plugins:link PLUGIN`
 
 Links a plugin into the CLI for development.
 
 ```
 USAGE
-  $ ptero-add-subuser plugins:link PLUGIN
+  $ ptero-cli plugins:link PLUGIN
 
 ARGUMENTS
   PATH  [default: .] path to plugin
@@ -203,16 +161,16 @@ DESCRIPTION
   command will override the user-installed or core plugin implementation. This is useful for development work.
 
 EXAMPLES
-  $ ptero-add-subuser plugins:link myplugin
+  $ ptero-cli plugins:link myplugin
 ```
 
-## `ptero-add-subuser plugins:uninstall PLUGIN...`
+## `ptero-cli plugins:uninstall PLUGIN...`
 
 Removes a plugin from the CLI.
 
 ```
 USAGE
-  $ ptero-add-subuser plugins:uninstall PLUGIN...
+  $ ptero-cli plugins:uninstall PLUGIN...
 
 ARGUMENTS
   PLUGIN  plugin to uninstall
@@ -225,17 +183,17 @@ DESCRIPTION
   Removes a plugin from the CLI.
 
 ALIASES
-  $ ptero-add-subuser plugins unlink
-  $ ptero-add-subuser plugins remove
+  $ ptero-cli plugins unlink
+  $ ptero-cli plugins remove
 ```
 
-## `ptero-add-subuser plugins update`
+## `ptero-cli plugins update`
 
 Update installed plugins.
 
 ```
 USAGE
-  $ ptero-add-subuser plugins update [-h] [-v]
+  $ ptero-cli plugins update [-h] [-v]
 
 FLAGS
   -h, --help     Show CLI help.

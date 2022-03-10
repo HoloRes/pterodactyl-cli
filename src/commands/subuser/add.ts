@@ -292,12 +292,31 @@ export default class AddSubuser extends Command {
 			validate: (str: string) => /^(([^\s"(),.:;<>@[\\\]]+(\.[^\s"(),.:;<>@[\\\]]+)*)|(".+"))@((\[(?:\d{1,3}\.){3}\d{1,3}])|(([\dA-Za-z-]+\.)+[A-Za-z]{2,}))$/.test(str),
 		});
 
-		prompts.next({
-			type: 'confirm',
+		const addEmailPrompt = {
+			type: 'expand',
 			name: 'add-email-0',
-			message: 'Do you want to add another email?',
-			default: false,
-		});
+			message: 'Do you want edit the email list?',
+			choices: [
+				{
+					label: 'Add',
+					value: 'add',
+					key: 'a',
+				},
+				{
+					label: 'Remove',
+					value: 'remove',
+					key: 'r',
+				},
+				{
+					label: 'Next',
+					value: 'next',
+					key: 'n',
+				},
+			],
+			default: 'n',
+		};
+
+		prompts.next(addEmailPrompt);
 
 		// eslint-disable-next-line unicorn/consistent-function-scoping
 		const postError = () => {
@@ -310,7 +329,7 @@ export default class AddSubuser extends Command {
 				if (name.startsWith('email')) {
 					emails.push(answer as string);
 				} else if (name.startsWith('add-email')) {
-					if (answer as boolean) {
+					if (answer as string === 'add') {
 						const index = Number.parseInt(name.slice('add-email-'.length), 10) + 1;
 						prompts.next({
 							type: 'input',
@@ -320,12 +339,23 @@ export default class AddSubuser extends Command {
 						});
 
 						prompts.next({
-							type: 'confirm',
+							...addEmailPrompt,
 							name: `add-email-${index}`,
-							message: 'Do you want to add another email?',
-							default: false,
 						});
-					} else {
+					} else if (answer as string === 'remove') {
+						const index = Number.parseInt(name.slice('add-email-'.length), 10) + 1;
+						prompts.next({
+							type: 'checkbox',
+							choices: emails.map((email, index) => ({ name: email, value: index })),
+							name: `remove-email-${index}`,
+							message: 'Which emails do you want to remove?',
+						});
+
+						prompts.next({
+							...addEmailPrompt,
+							name: `add-email-${index}`,
+						});
+					} else if (answer as string === 'next') {
 						prompts.next({
 							type: 'checkbox',
 							name: 'permissions',
@@ -340,6 +370,11 @@ export default class AddSubuser extends Command {
 							default: false,
 						});
 						prompts.complete();
+					}
+				} else if (name.startsWith('remove-email')) {
+					// eslint-disable-next-line no-restricted-syntax
+					for (const ans of (answer as { value: number }[])) {
+						emails.splice(ans.value, 1);
 					}
 				} else if (name === 'servers') {
 					selectedServers = answer as string[];
