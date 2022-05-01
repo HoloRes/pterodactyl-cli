@@ -20,7 +20,7 @@
     "@oclif/core": "^1",
     "@oclif/plugin-help": "^5",
     "@oclif/plugin-plugins": "^2.0.1",
-    "axios": "^0.26.0",
+    "axios": "^0.27.2",
     "inquirer": "^8.2.0",
     "rxjs": "^7.5.4"
   },
